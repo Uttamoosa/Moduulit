@@ -42,7 +42,7 @@ if (isleap(year)) {
 }
 
 if (confirm("Should I calculate the square root?")) {
-    var squareint = parseInt(prompt("number: "))
+    let squareint = parseInt(prompt("number: "))
 
     if (squareint < 0) {
         document.querySelector("#square").innerHTML = "The square root of a negative number is not defined"
@@ -55,15 +55,15 @@ if (confirm("Should I calculate the square root?")) {
 }
 
 const dicenum = parseInt(prompt("Number of dice: "))
-var dicesum = 0
+let dicesum = 0
 
-for (var i = 0; i < dicenum; i++) {
+for (let i = 0; i < dicenum; i++) {
     dicesum += Math.floor(Math.random() * 6)
 }
 
 console.log("Sum of dice: " + dicesum)
 
-var iyear = parseInt(prompt("Start year: "))
+let iyear = parseInt(prompt("Start year: "))
 const endyear = parseInt(prompt("End year: "))
 
 const ul = document.getElementById("yearlist")
@@ -79,9 +79,9 @@ while (iyear <= endyear) {
 }
 
 const primeint = parseInt(prompt("Integer"))
-var isprime = true
+let isprime = true
 
-for (var i = 2; i < primeint; i++) {
+for (let i = 2; i < primeint; i++) {
     if (primeint % i == 0) {
         isprime = false
         console.log(`${primeint} is not a prime number`)
@@ -93,9 +93,19 @@ if (isprime) {
     console.log(`${primeint} is a prime number`)
 }
 
-const dicenum2 = parseInt(prompt("Number of dice"))
-var dicesum
+const numofdice = parseInt(prompt("number of dice to roll"))
+const target = parseInt(prompt("target value"))
 
-for (i = 1; i < dicenum2; i++) {
-    dicesum
+let hits = 0
+for (i = 0; i < 50000; i++) {
+    let temp = 0
+    for (i2 = 0; i2 < numofdice; i2++) {
+        temp +=  Math.floor(Math.random() * 6) + 1
+    }
+
+    if (temp == target) {
+        hits++
+    }
 }
+
+console.log(`${numofdice} dice sum ${target}, probability is about ${(hits / 50000) * 100}%`)
